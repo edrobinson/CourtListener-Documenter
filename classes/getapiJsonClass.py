@@ -11,7 +11,7 @@ The output islocated in /ClApiJson
 """
 class getApiJsons:
     # headers array for requests
-    Headers = {"Authentication": "Token 2ce053ed5100cd5b3d3486ea51711be2915ad8c5"}
+    Headers = {"Authentication": "Token your cl auth token"}
     
     def __init__(self, outputFolder):
         self.outputFolder = outputFolder
