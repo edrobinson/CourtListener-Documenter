@@ -1,0 +1,73 @@
+{
+    "name": "Opinions Cited List",
+    "description": "",
+    "renders": [
+        "application/json",
+        "text/html",
+        "application/xml"
+    ],
+    "parses": [
+        "application/json",
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "application/xml"
+    ],
+    "actions": {
+        "POST": {
+            "resource_uri": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Resource uri"
+            },
+            "id": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Id"
+            },
+            "citing_opinion": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Citing opinion"
+            },
+            "cited_opinion": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Cited opinion"
+            },
+            "depth": {
+                "type": "integer",
+                "required": false,
+                "read_only": false,
+                "label": "Depth",
+                "help_text": "The number of times the cited opinion was cited in the citing opinion",
+                "min_value": -2147483648,
+                "max_value": 2147483647
+            }
+        }
+    },
+    "filters": {
+        "id": {
+            "type": "NumberRangeFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range"
+            ]
+        },
+        "citing_opinion": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'Opinions'"
+        },
+        "cited_opinion": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'Opinions'"
+        }
+    }
+}

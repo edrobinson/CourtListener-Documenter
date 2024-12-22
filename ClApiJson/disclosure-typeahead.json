@@ -1,0 +1,63 @@
+{
+    "name": "Person Disclosure List",
+    "description": "",
+    "renders": [
+        "application/json",
+        "text/html",
+        "application/xml"
+    ],
+    "parses": [
+        "application/json",
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "application/xml"
+    ],
+    "actions": {
+        "POST": {
+            "position_str": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Position str"
+            },
+            "name_full": {
+                "type": "string",
+                "required": true,
+                "read_only": false,
+                "label": "Name full"
+            },
+            "disclosure_years": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Disclosure years"
+            },
+            "thumbnail_path": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Thumbnail path"
+            },
+            "newest_disclosure_url": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Newest disclosure url"
+            }
+        }
+    },
+    "filters": {
+        "fullname": {
+            "type": "Filter",
+            "lookup_types": [
+                "exact"
+            ]
+        }
+    },
+    "ordering": [
+        "id",
+        "date_created",
+        "date_modified",
+        "name_last"
+    ]
+}

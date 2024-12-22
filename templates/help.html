@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/docs.css">
+    <link rel="stylesheet" href="../assets/css/mdstyle.css">
+ 
+    <title>Help</title>
+  </head>
+  <body>
+		<div class="container mt-2" style="width: 95%;margin-left: 2.5%;">
+			<div class="row">
+				<div class="col mb-4">
+				<!-- Navbar -->
+				[navbar]
+				<!-- End Navbar -->
+				</div>
+			</div>
+
+			<div class="row mt-4 justify-content-center">
+				<div class="col mt-4 mb-2 offset-1">
+				<!-- Content -->
+			<div  class="container">
+				<div class="row">
+					<div "class=col offset-2">
+						<h4>CourtListener API Documentation Help</h4>
+						<p>This project provides a set of HTML files derived from from the CL APIs options requests.
+						The API json has been translated into easy to read HTML tables.</p>
+						<h5>Sample Content:</h5>
+						<p style="margin-left: 50px; border: 2px solid black"><img src="staticpages/samplescreen.png" alt="Sample API screen" /></p>
+						<p>This is partial screen shot of the courts API page.<br />
+						The table consists of &quot;nested&quot; tables of the JSON objects.<br />
+						The first 2 entrys are simple key/value pairs so they make single rows in the main table.<br />
+						The next item - renders - is a list of the HTTP types the API can render as responses to an API request. It still occupies only a single row. The &quot;parses&quot; element is the same type.</p>
+						<p>The next item - actions - is more complex. It has a child element named &quot;POST&quot; which contains a long list of different elements. It is many screens long. As a result, the actions
+						makes a table containinf the POST table containing myriad smaller elements. The borders around the elements should be helpful visually to understand the structure.</p>
+						<h5>The Navbar:</h5>
+						<p>Each page contains the same navbar with the folloowing features:</p>
+						<ol>
+						<li>
+						<em><strong>Home</strong></em> takes you to the project home page.</li>
+						<li>
+						<em><strong>Help</strong></em> brings you to this page.</li>
+						<li>
+						<em><strong>Documentation Pages</strong></em> is a dropdown containing links to all of the other pages.</li>
+						<li>
+						<em><strong>Search within the page</strong></em> impements a full text search of the page content:
+						<ol>
+						<li>Type the word or string you want to find in the box labeled &quot;Search.&quot;</li>
+						<li>Click the &quot;Search&quot; button. If, your text is in the page, it will scroll to and select the first ocurrance. Subsequent clicks go to subsequent ocurrances until it wraps back around to your typed entry.</li>
+						</ol>
+						</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+				
+				<!-- End Content -->
+				</div>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.js"></script>
+		<!-- Local JS -->
+		<script>
+	/*
+		Js functions for the doc project
+	*/
+
+	//Service the navbar search button
+	function search()
+	{
+		searchterm = $('#searchvalue').val()
+		window.find(searchterm,false,false,true)
+	}
+
+	//Load a page - see dropdown in the navbar
+	function showPage(path)
+	{
+		location.replace(path)
+	}
+</script>
+
+
+		
+  </body>
+</html>

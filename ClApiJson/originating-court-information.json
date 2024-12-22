@@ -1,0 +1,129 @@
+{
+    "name": "Originating Court Information List",
+    "description": "",
+    "renders": [
+        "application/json",
+        "text/html",
+        "application/xml"
+    ],
+    "parses": [
+        "application/json",
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "application/xml"
+    ],
+    "actions": {
+        "POST": {
+            "resource_uri": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Resource uri"
+            },
+            "id": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Id"
+            },
+            "date_created": {
+                "type": "datetime",
+                "required": false,
+                "read_only": true,
+                "label": "Date created",
+                "help_text": "The moment when the item was created."
+            },
+            "date_modified": {
+                "type": "datetime",
+                "required": false,
+                "read_only": true,
+                "label": "Date modified",
+                "help_text": "The last moment when the item was modified. A value in year 1750 indicates the value is unknown"
+            },
+            "docket_number": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Docket number",
+                "help_text": "The docket number in the lower court."
+            },
+            "assigned_to_str": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Assigned to str",
+                "help_text": "The judge that the case was assigned to, as a string."
+            },
+            "ordering_judge_str": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Ordering judge str",
+                "help_text": "The judge that issued the final order in the case, as a string."
+            },
+            "court_reporter": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Court reporter",
+                "help_text": "The court reporter responsible for the case."
+            },
+            "date_disposed": {
+                "type": "date",
+                "required": false,
+                "read_only": false,
+                "label": "Date disposed",
+                "help_text": "The date the case was disposed at the lower court."
+            },
+            "date_filed": {
+                "type": "date",
+                "required": false,
+                "read_only": false,
+                "label": "Date filed",
+                "help_text": "The date the case was filed in the lower court."
+            },
+            "date_judgment": {
+                "type": "date",
+                "required": false,
+                "read_only": false,
+                "label": "Date judgment",
+                "help_text": "The date of the order or judgment in the lower court."
+            },
+            "date_judgment_eod": {
+                "type": "date",
+                "required": false,
+                "read_only": false,
+                "label": "Date judgment eod",
+                "help_text": "The date the judgment was Entered On the Docket at the lower court."
+            },
+            "date_filed_noa": {
+                "type": "date",
+                "required": false,
+                "read_only": false,
+                "label": "Date filed noa",
+                "help_text": "The date the notice of appeal was filed for the case."
+            },
+            "date_received_coa": {
+                "type": "date",
+                "required": false,
+                "read_only": false,
+                "label": "Date received coa",
+                "help_text": "The date the case was received at the court of appeals."
+            },
+            "assigned_to": {
+                "type": "field",
+                "required": false,
+                "read_only": false,
+                "label": "Assigned to",
+                "help_text": "The judge the case was assigned to."
+            },
+            "ordering_judge": {
+                "type": "field",
+                "required": false,
+                "read_only": false,
+                "label": "Ordering judge",
+                "help_text": "The judge that issued the final order in the case."
+            }
+        }
+    }
+}

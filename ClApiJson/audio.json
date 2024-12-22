@@ -1,0 +1,708 @@
+{
+    "name": "Audio List",
+    "description": "",
+    "renders": [
+        "application/json",
+        "text/html",
+        "application/xml"
+    ],
+    "parses": [
+        "application/json",
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "application/xml"
+    ],
+    "actions": {
+        "POST": {
+            "resource_uri": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Resource uri"
+            },
+            "id": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Id"
+            },
+            "absolute_url": {
+                "type": "string",
+                "required": false,
+                "read_only": true,
+                "label": "Absolute url"
+            },
+            "panel": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Panel"
+            },
+            "docket": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Docket"
+            },
+            "date_created": {
+                "type": "datetime",
+                "required": false,
+                "read_only": true,
+                "label": "Date created",
+                "help_text": "The moment when the item was created."
+            },
+            "date_modified": {
+                "type": "datetime",
+                "required": false,
+                "read_only": true,
+                "label": "Date modified",
+                "help_text": "The last moment when the item was modified. A value in year 1750 indicates the value is unknown"
+            },
+            "source": {
+                "type": "choice",
+                "required": false,
+                "read_only": false,
+                "label": "Source",
+                "help_text": "the source of the audio file, one of: C (court website), R (public.resource.org), CR (court website merged with resource.org), L (lawbox), LC (lawbox merged with court), LR (lawbox merged with resource.org), LCR (lawbox merged with court and resource.org), M (manual input), A (internet archive), H (brad heath archive), Z (columbia archive), ZA (columbia merged with internet archive), ZD (columbia merged with direct court input), ZC (columbia merged with court), ZH (columbia merged with brad heath archive), ZLC (columbia merged with lawbox and court), ZLR (columbia merged with lawbox and resource.org), ZLCR (columbia merged with lawbox, court, and resource.org), ZR (columbia merged with resource.org), ZCR (columbia merged with court and resource.org), ZL (columbia merged with lawbox), ZM (columbia merged with manual input), ZQ (columbia merged with 2020 anonymous database), U (Harvard, Library Innovation Lab Case Law Access Project), CU (court website merged with Harvard), D (direct court input), Q (2020 anonymous database), QU (2020 anonymous database merged with Harvard), CU (court website merged with Harvard), CRU (court website merged with public.resource.org and Harvard), DU (direct court input merged with Harvard), LU (lawbox merged with Harvard), LCU (Lawbox merged with court website and Harvard), LRU (Lawbox merged with public.resource.org and with Harvard), MU (Manual input merged with Harvard), RU (public.resource.org merged with Harvard), ZU (columbia archive merged with Harvard), ZLU (columbia archive merged with Lawbox and Harvard), ZDU (columbia archive merged with direct court input and Harvard), ZLRU (columbia archive merged with lawbox, public.resource.org and Harvard), ZLCRU (columbia archive merged with lawbox, court website, public.resource.org and Harvard), ZCU (columbia archive merged with court website and Harvard), ZMU (columbia archive merged with manual input and Harvard), ZRU (columbia archive merged with public.resource.org and Harvard), ZLCU (columbia archive merged with lawbox, court website and Harvard), G (recap)",
+                "choices": [
+                    {
+                        "value": "C",
+                        "display_name": "court website"
+                    },
+                    {
+                        "value": "R",
+                        "display_name": "public.resource.org"
+                    },
+                    {
+                        "value": "CR",
+                        "display_name": "court website merged with resource.org"
+                    },
+                    {
+                        "value": "L",
+                        "display_name": "lawbox"
+                    },
+                    {
+                        "value": "LC",
+                        "display_name": "lawbox merged with court"
+                    },
+                    {
+                        "value": "LR",
+                        "display_name": "lawbox merged with resource.org"
+                    },
+                    {
+                        "value": "LCR",
+                        "display_name": "lawbox merged with court and resource.org"
+                    },
+                    {
+                        "value": "M",
+                        "display_name": "manual input"
+                    },
+                    {
+                        "value": "A",
+                        "display_name": "internet archive"
+                    },
+                    {
+                        "value": "H",
+                        "display_name": "brad heath archive"
+                    },
+                    {
+                        "value": "Z",
+                        "display_name": "columbia archive"
+                    },
+                    {
+                        "value": "ZA",
+                        "display_name": "columbia merged with internet archive"
+                    },
+                    {
+                        "value": "ZD",
+                        "display_name": "columbia merged with direct court input"
+                    },
+                    {
+                        "value": "ZC",
+                        "display_name": "columbia merged with court"
+                    },
+                    {
+                        "value": "ZH",
+                        "display_name": "columbia merged with brad heath archive"
+                    },
+                    {
+                        "value": "ZLC",
+                        "display_name": "columbia merged with lawbox and court"
+                    },
+                    {
+                        "value": "ZLR",
+                        "display_name": "columbia merged with lawbox and resource.org"
+                    },
+                    {
+                        "value": "ZLCR",
+                        "display_name": "columbia merged with lawbox, court, and resource.org"
+                    },
+                    {
+                        "value": "ZR",
+                        "display_name": "columbia merged with resource.org"
+                    },
+                    {
+                        "value": "ZCR",
+                        "display_name": "columbia merged with court and resource.org"
+                    },
+                    {
+                        "value": "ZL",
+                        "display_name": "columbia merged with lawbox"
+                    },
+                    {
+                        "value": "ZM",
+                        "display_name": "columbia merged with manual input"
+                    },
+                    {
+                        "value": "ZQ",
+                        "display_name": "columbia merged with 2020 anonymous database"
+                    },
+                    {
+                        "value": "U",
+                        "display_name": "Harvard, Library Innovation Lab Case Law Access Project"
+                    },
+                    {
+                        "value": "CU",
+                        "display_name": "court website merged with Harvard"
+                    },
+                    {
+                        "value": "D",
+                        "display_name": "direct court input"
+                    },
+                    {
+                        "value": "Q",
+                        "display_name": "2020 anonymous database"
+                    },
+                    {
+                        "value": "QU",
+                        "display_name": "2020 anonymous database merged with Harvard"
+                    },
+                    {
+                        "value": "CRU",
+                        "display_name": "court website merged with public.resource.org and Harvard"
+                    },
+                    {
+                        "value": "DU",
+                        "display_name": "direct court input merged with Harvard"
+                    },
+                    {
+                        "value": "LU",
+                        "display_name": "lawbox merged with Harvard"
+                    },
+                    {
+                        "value": "LCU",
+                        "display_name": "Lawbox merged with court website and Harvard"
+                    },
+                    {
+                        "value": "LRU",
+                        "display_name": "Lawbox merged with public.resource.org and with Harvard"
+                    },
+                    {
+                        "value": "MU",
+                        "display_name": "Manual input merged with Harvard"
+                    },
+                    {
+                        "value": "RU",
+                        "display_name": "public.resource.org merged with Harvard"
+                    },
+                    {
+                        "value": "ZU",
+                        "display_name": "columbia archive merged with Harvard"
+                    },
+                    {
+                        "value": "ZLU",
+                        "display_name": "columbia archive merged with Lawbox and Harvard"
+                    },
+                    {
+                        "value": "ZDU",
+                        "display_name": "columbia archive merged with direct court input and Harvard"
+                    },
+                    {
+                        "value": "ZLRU",
+                        "display_name": "columbia archive merged with lawbox, public.resource.org and Harvard"
+                    },
+                    {
+                        "value": "ZLCRU",
+                        "display_name": "columbia archive merged with lawbox, court website, public.resource.org and Harvard"
+                    },
+                    {
+                        "value": "ZCU",
+                        "display_name": "columbia archive merged with court website and Harvard"
+                    },
+                    {
+                        "value": "ZMU",
+                        "display_name": "columbia archive merged with manual input and Harvard"
+                    },
+                    {
+                        "value": "ZRU",
+                        "display_name": "columbia archive merged with public.resource.org and Harvard"
+                    },
+                    {
+                        "value": "ZLCU",
+                        "display_name": "columbia archive merged with lawbox, court website and Harvard"
+                    },
+                    {
+                        "value": "G",
+                        "display_name": "recap"
+                    }
+                ]
+            },
+            "case_name_short": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Case name short",
+                "help_text": "The abridged name of the case, often a single word, e.g. 'Marsh'"
+            },
+            "case_name": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Case name",
+                "help_text": "The full name of the case"
+            },
+            "case_name_full": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Case name full",
+                "help_text": "The full name of the case"
+            },
+            "judges": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Judges",
+                "help_text": "The judges that heard the oral arguments as a simple text string. This field is used when normalized judges cannot be placed into the panel field."
+            },
+            "sha1": {
+                "type": "string",
+                "required": true,
+                "read_only": false,
+                "label": "Sha1",
+                "help_text": "unique ID for the document, as generated via SHA1 of the binary file or text data",
+                "max_length": 40
+            },
+            "download_url": {
+                "type": "url",
+                "required": false,
+                "read_only": false,
+                "label": "Download url",
+                "help_text": "The URL on the court website where the document was originally scraped",
+                "max_length": 500
+            },
+            "local_path_mp3": {
+                "type": "file upload",
+                "required": false,
+                "read_only": false,
+                "label": "Local path mp3",
+                "help_text": "The location in AWS S3 where our enhanced copy of the original audio file is stored. Note that the field name is historical, from before when we used S3. To find the location in S3, concatenate https://storage.courtlistener.com/ and the value of this field.",
+                "max_length": 100
+            },
+            "local_path_original_file": {
+                "type": "file upload",
+                "required": true,
+                "read_only": false,
+                "label": "Local path original file",
+                "help_text": "The location in AWS S3 where the original audio file downloaded from the court is stored. Note that the field name is historical, from before when we used S3. To find the location in S3, concatenate https://storage.courtlistener.com/ and the value of this field.",
+                "max_length": 100
+            },
+            "filepath_ia": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Filepath ia",
+                "help_text": "The URL of the file in IA",
+                "max_length": 1000
+            },
+            "ia_upload_failure_count": {
+                "type": "integer",
+                "required": false,
+                "read_only": false,
+                "label": "Ia upload failure count",
+                "help_text": "Number of times the upload to the Internet Archive failed.",
+                "min_value": -32768,
+                "max_value": 32767
+            },
+            "duration": {
+                "type": "integer",
+                "required": false,
+                "read_only": false,
+                "label": "Duration",
+                "help_text": "the length of the item, in seconds",
+                "min_value": -32768,
+                "max_value": 32767
+            },
+            "processing_complete": {
+                "type": "boolean",
+                "required": false,
+                "read_only": false,
+                "label": "Processing complete",
+                "help_text": "Is audio for this item done processing?"
+            },
+            "date_blocked": {
+                "type": "date",
+                "required": false,
+                "read_only": false,
+                "label": "Date blocked",
+                "help_text": "The date that this opinion was blocked from indexing by search engines"
+            },
+            "blocked": {
+                "type": "boolean",
+                "required": false,
+                "read_only": false,
+                "label": "Blocked",
+                "help_text": "Should this item be blocked from indexing by search engines?"
+            },
+            "stt_status": {
+                "type": "choice",
+                "required": false,
+                "read_only": false,
+                "label": "Speech to text status",
+                "help_text": "The status of the Speech to Text for this item?",
+                "choices": [
+                    {
+                        "value": 0,
+                        "display_name": "Speech to Text Needed"
+                    },
+                    {
+                        "value": 1,
+                        "display_name": "Speech to Text Complete"
+                    },
+                    {
+                        "value": 2,
+                        "display_name": "Speech to Text Failed"
+                    },
+                    {
+                        "value": 3,
+                        "display_name": "Transcription does not match audio"
+                    },
+                    {
+                        "value": 4,
+                        "display_name": "File size is bigger than 25 MB"
+                    },
+                    {
+                        "value": 5,
+                        "display_name": "File does not exist"
+                    }
+                ]
+            },
+            "stt_source": {
+                "type": "choice",
+                "required": false,
+                "read_only": false,
+                "label": "Speech to text source",
+                "help_text": "Source used to get the transcription",
+                "choices": [
+                    {
+                        "value": 1,
+                        "display_name": "OpenAI API's whisper-1 model"
+                    },
+                    {
+                        "value": 2,
+                        "display_name": "Self hosted Whisper model"
+                    }
+                ]
+            },
+            "stt_transcript": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Speech to text transcription",
+                "help_text": "Speech to text transcription"
+            }
+        }
+    },
+    "filters": {
+        "id": {
+            "type": "NumberRangeFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range"
+            ]
+        },
+        "date_modified": {
+            "type": "NumberFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range",
+                "year",
+                "month",
+                "day",
+                "hour",
+                "minute",
+                "second"
+            ]
+        },
+        "date_created": {
+            "type": "NumberFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range",
+                "year",
+                "month",
+                "day",
+                "hour",
+                "minute",
+                "second"
+            ]
+        },
+        "sha1": {
+            "type": "CharFilter",
+            "lookup_types": [
+                "exact"
+            ]
+        },
+        "blocked": {
+            "type": "BooleanFilter",
+            "lookup_types": [
+                "exact"
+            ]
+        },
+        "date_blocked": {
+            "type": "NumberFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range",
+                "year",
+                "month",
+                "day"
+            ]
+        },
+        "processing_complete": {
+            "type": "BooleanFilter",
+            "lookup_types": [
+                "exact"
+            ]
+        },
+        "stt_status": {
+            "type": "NumberRangeFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range"
+            ]
+        },
+        "docket": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'Dockets'"
+        },
+        "source": {
+            "type": "MultipleChoiceFilter",
+            "lookup_types": [
+                "exact"
+            ],
+            "choices": [
+                {
+                    "value": "C",
+                    "display_name": "court website"
+                },
+                {
+                    "value": "R",
+                    "display_name": "public.resource.org"
+                },
+                {
+                    "value": "CR",
+                    "display_name": "court website merged with resource.org"
+                },
+                {
+                    "value": "L",
+                    "display_name": "lawbox"
+                },
+                {
+                    "value": "LC",
+                    "display_name": "lawbox merged with court"
+                },
+                {
+                    "value": "LR",
+                    "display_name": "lawbox merged with resource.org"
+                },
+                {
+                    "value": "LCR",
+                    "display_name": "lawbox merged with court and resource.org"
+                },
+                {
+                    "value": "M",
+                    "display_name": "manual input"
+                },
+                {
+                    "value": "A",
+                    "display_name": "internet archive"
+                },
+                {
+                    "value": "H",
+                    "display_name": "brad heath archive"
+                },
+                {
+                    "value": "Z",
+                    "display_name": "columbia archive"
+                },
+                {
+                    "value": "ZA",
+                    "display_name": "columbia merged with internet archive"
+                },
+                {
+                    "value": "ZD",
+                    "display_name": "columbia merged with direct court input"
+                },
+                {
+                    "value": "ZC",
+                    "display_name": "columbia merged with court"
+                },
+                {
+                    "value": "ZH",
+                    "display_name": "columbia merged with brad heath archive"
+                },
+                {
+                    "value": "ZLC",
+                    "display_name": "columbia merged with lawbox and court"
+                },
+                {
+                    "value": "ZLR",
+                    "display_name": "columbia merged with lawbox and resource.org"
+                },
+                {
+                    "value": "ZLCR",
+                    "display_name": "columbia merged with lawbox, court, and resource.org"
+                },
+                {
+                    "value": "ZR",
+                    "display_name": "columbia merged with resource.org"
+                },
+                {
+                    "value": "ZCR",
+                    "display_name": "columbia merged with court and resource.org"
+                },
+                {
+                    "value": "ZL",
+                    "display_name": "columbia merged with lawbox"
+                },
+                {
+                    "value": "ZM",
+                    "display_name": "columbia merged with manual input"
+                },
+                {
+                    "value": "ZQ",
+                    "display_name": "columbia merged with 2020 anonymous database"
+                },
+                {
+                    "value": "U",
+                    "display_name": "Harvard, Library Innovation Lab Case Law Access Project"
+                },
+                {
+                    "value": "CU",
+                    "display_name": "court website merged with Harvard"
+                },
+                {
+                    "value": "D",
+                    "display_name": "direct court input"
+                },
+                {
+                    "value": "Q",
+                    "display_name": "2020 anonymous database"
+                },
+                {
+                    "value": "QU",
+                    "display_name": "2020 anonymous database merged with Harvard"
+                },
+                {
+                    "value": "CU",
+                    "display_name": "court website merged with Harvard"
+                },
+                {
+                    "value": "CRU",
+                    "display_name": "court website merged with public.resource.org and Harvard"
+                },
+                {
+                    "value": "DU",
+                    "display_name": "direct court input merged with Harvard"
+                },
+                {
+                    "value": "LU",
+                    "display_name": "lawbox merged with Harvard"
+                },
+                {
+                    "value": "LCU",
+                    "display_name": "Lawbox merged with court website and Harvard"
+                },
+                {
+                    "value": "LRU",
+                    "display_name": "Lawbox merged with public.resource.org and with Harvard"
+                },
+                {
+                    "value": "MU",
+                    "display_name": "Manual input merged with Harvard"
+                },
+                {
+                    "value": "RU",
+                    "display_name": "public.resource.org merged with Harvard"
+                },
+                {
+                    "value": "ZU",
+                    "display_name": "columbia archive merged with Harvard"
+                },
+                {
+                    "value": "ZLU",
+                    "display_name": "columbia archive merged with Lawbox and Harvard"
+                },
+                {
+                    "value": "ZDU",
+                    "display_name": "columbia archive merged with direct court input and Harvard"
+                },
+                {
+                    "value": "ZLRU",
+                    "display_name": "columbia archive merged with lawbox, public.resource.org and Harvard"
+                },
+                {
+                    "value": "ZLCRU",
+                    "display_name": "columbia archive merged with lawbox, court website, public.resource.org and Harvard"
+                },
+                {
+                    "value": "ZCU",
+                    "display_name": "columbia archive merged with court website and Harvard"
+                },
+                {
+                    "value": "ZMU",
+                    "display_name": "columbia archive merged with manual input and Harvard"
+                },
+                {
+                    "value": "ZRU",
+                    "display_name": "columbia archive merged with public.resource.org and Harvard"
+                },
+                {
+                    "value": "ZLCU",
+                    "display_name": "columbia archive merged with lawbox, court website and Harvard"
+                },
+                {
+                    "value": "G",
+                    "display_name": "recap"
+                }
+            ]
+        }
+    },
+    "ordering": [
+        "id",
+        "date_created",
+        "date_modified",
+        "date_blocked"
+    ]
+}

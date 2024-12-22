@@ -1,0 +1,408 @@
+{
+    "name": "Opinion List",
+    "description": "",
+    "renders": [
+        "application/json",
+        "text/html",
+        "application/xml"
+    ],
+    "parses": [
+        "application/json",
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "application/xml"
+    ],
+    "actions": {
+        "POST": {
+            "resource_uri": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Resource uri"
+            },
+            "id": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Id"
+            },
+            "absolute_url": {
+                "type": "string",
+                "required": false,
+                "read_only": true,
+                "label": "Absolute url"
+            },
+            "cluster_id": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Cluster id"
+            },
+            "cluster": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Cluster"
+            },
+            "author_id": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Author id"
+            },
+            "author": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Author"
+            },
+            "joined_by": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Joined by"
+            },
+            "date_created": {
+                "type": "datetime",
+                "required": false,
+                "read_only": true,
+                "label": "Date created",
+                "help_text": "The moment when the item was created."
+            },
+            "date_modified": {
+                "type": "datetime",
+                "required": false,
+                "read_only": true,
+                "label": "Date modified",
+                "help_text": "The last moment when the item was modified. A value in year 1750 indicates the value is unknown"
+            },
+            "author_str": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Author str",
+                "help_text": "The primary author of this opinion, as a simple text string. This field is used when normalized judges cannot be placed into the author field."
+            },
+            "per_curiam": {
+                "type": "boolean",
+                "required": false,
+                "read_only": false,
+                "label": "Per curiam",
+                "help_text": "Is this opinion per curiam, without a single author?"
+            },
+            "joined_by_str": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Joined by str",
+                "help_text": "Other judges that joined the primary author in this opinion str"
+            },
+            "type": {
+                "type": "choice",
+                "required": true,
+                "read_only": false,
+                "label": "Type",
+                "choices": [
+                    {
+                        "value": "010combined",
+                        "display_name": "Combined Opinion"
+                    },
+                    {
+                        "value": "015unamimous",
+                        "display_name": "Unanimous Opinion"
+                    },
+                    {
+                        "value": "020lead",
+                        "display_name": "Lead Opinion"
+                    },
+                    {
+                        "value": "025plurality",
+                        "display_name": "Plurality Opinion"
+                    },
+                    {
+                        "value": "030concurrence",
+                        "display_name": "Concurrence Opinion"
+                    },
+                    {
+                        "value": "035concurrenceinpart",
+                        "display_name": "In Part Opinion"
+                    },
+                    {
+                        "value": "040dissent",
+                        "display_name": "Dissent"
+                    },
+                    {
+                        "value": "050addendum",
+                        "display_name": "Addendum"
+                    },
+                    {
+                        "value": "060remittitur",
+                        "display_name": "Remittitur"
+                    },
+                    {
+                        "value": "070rehearing",
+                        "display_name": "Rehearing"
+                    },
+                    {
+                        "value": "080onthemerits",
+                        "display_name": "On the Merits"
+                    },
+                    {
+                        "value": "090onmotiontostrike",
+                        "display_name": "On Motion to Strike Cost Bill"
+                    },
+                    {
+                        "value": "100trialcourt",
+                        "display_name": "Trial Court Document"
+                    }
+                ]
+            },
+            "sha1": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Sha1",
+                "help_text": "unique ID for the document, as generated via SHA1 of the binary file or text data",
+                "max_length": 40
+            },
+            "page_count": {
+                "type": "integer",
+                "required": false,
+                "read_only": false,
+                "label": "Page count",
+                "help_text": "The number of pages in the document, if known",
+                "min_value": -2147483648,
+                "max_value": 2147483647
+            },
+            "download_url": {
+                "type": "url",
+                "required": false,
+                "read_only": false,
+                "label": "Download url",
+                "help_text": "The URL where the item was originally scraped. Note that these URLs may often be dead due to the court or the bulk provider changing their website. We keep the original link here given that it often contains valuable metadata.",
+                "max_length": 500
+            },
+            "local_path": {
+                "type": "file upload",
+                "required": false,
+                "read_only": false,
+                "label": "Local path",
+                "help_text": "The location in AWS S3 where the original opinion file is stored. Note that the field name is historical, from before when we used S3. To find the location in S3, concatenate https://storage.courtlistener.com/ and the value of this field.",
+                "max_length": 100
+            },
+            "plain_text": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Plain text",
+                "help_text": "Plain text of the document after extraction using pdftotext, wpd2txt, etc."
+            },
+            "html": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Html",
+                "help_text": "HTML of the document, if available in the original"
+            },
+            "html_lawbox": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Html lawbox",
+                "help_text": "HTML of Lawbox documents"
+            },
+            "html_columbia": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Html columbia",
+                "help_text": "HTML of Columbia archive"
+            },
+            "html_anon_2020": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Html anon 2020",
+                "help_text": "HTML of 2020 anonymous archive"
+            },
+            "xml_harvard": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Xml harvard",
+                "help_text": "XML of Harvard CaseLaw Access Project opinion"
+            },
+            "html_with_citations": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Html with citations",
+                "help_text": "HTML of the document with citation links and other post-processed markup added"
+            },
+            "extracted_by_ocr": {
+                "type": "boolean",
+                "required": false,
+                "read_only": false,
+                "label": "Extracted by ocr",
+                "help_text": "Whether OCR was used to get this document content"
+            },
+            "ordering_key": {
+                "type": "integer",
+                "required": false,
+                "read_only": false,
+                "label": "Ordering key",
+                "min_value": -2147483648,
+                "max_value": 2147483647
+            },
+            "opinions_cited": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Opinions cited",
+                "help_text": "Opinions cited by this opinion"
+            }
+        }
+    },
+    "filters": {
+        "id": {
+            "type": "NumberRangeFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range"
+            ]
+        },
+        "date_modified": {
+            "type": "NumberFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range",
+                "year",
+                "month",
+                "day",
+                "hour",
+                "minute",
+                "second"
+            ]
+        },
+        "date_created": {
+            "type": "NumberFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range",
+                "year",
+                "month",
+                "day",
+                "hour",
+                "minute",
+                "second"
+            ]
+        },
+        "sha1": {
+            "type": "CharFilter",
+            "lookup_types": [
+                "exact"
+            ]
+        },
+        "extracted_by_ocr": {
+            "type": "BooleanFilter",
+            "lookup_types": [
+                "exact"
+            ]
+        },
+        "per_curiam": {
+            "type": "BooleanFilter",
+            "lookup_types": [
+                "exact"
+            ]
+        },
+        "cluster": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'Opinion Clusters'"
+        },
+        "author": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'People'"
+        },
+        "joined_by": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'People'"
+        },
+        "type": {
+            "type": "MultipleChoiceFilter",
+            "lookup_types": [
+                "exact"
+            ],
+            "choices": [
+                {
+                    "value": "010combined",
+                    "display_name": "Combined Opinion"
+                },
+                {
+                    "value": "015unamimous",
+                    "display_name": "Unanimous Opinion"
+                },
+                {
+                    "value": "020lead",
+                    "display_name": "Lead Opinion"
+                },
+                {
+                    "value": "025plurality",
+                    "display_name": "Plurality Opinion"
+                },
+                {
+                    "value": "030concurrence",
+                    "display_name": "Concurrence Opinion"
+                },
+                {
+                    "value": "035concurrenceinpart",
+                    "display_name": "In Part Opinion"
+                },
+                {
+                    "value": "040dissent",
+                    "display_name": "Dissent"
+                },
+                {
+                    "value": "050addendum",
+                    "display_name": "Addendum"
+                },
+                {
+                    "value": "060remittitur",
+                    "display_name": "Remittitur"
+                },
+                {
+                    "value": "070rehearing",
+                    "display_name": "Rehearing"
+                },
+                {
+                    "value": "080onthemerits",
+                    "display_name": "On the Merits"
+                },
+                {
+                    "value": "090onmotiontostrike",
+                    "display_name": "On Motion to Strike Cost Bill"
+                },
+                {
+                    "value": "100trialcourt",
+                    "display_name": "Trial Court Document"
+                }
+            ]
+        }
+    },
+    "ordering": [
+        "id",
+        "date_created",
+        "date_modified"
+    ]
+}

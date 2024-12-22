@@ -1,0 +1,1018 @@
+{
+    "name": "Opinion Cluster List",
+    "description": "",
+    "renders": [
+        "application/json",
+        "text/html",
+        "application/xml"
+    ],
+    "parses": [
+        "application/json",
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "application/xml"
+    ],
+    "actions": {
+        "POST": {
+            "resource_uri": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Resource uri"
+            },
+            "id": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Id"
+            },
+            "absolute_url": {
+                "type": "string",
+                "required": false,
+                "read_only": true,
+                "label": "Absolute url"
+            },
+            "panel": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Panel"
+            },
+            "non_participating_judges": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Non participating judges"
+            },
+            "docket_id": {
+                "type": "field",
+                "required": false,
+                "read_only": true,
+                "label": "Docket id"
+            },
+            "docket": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Docket"
+            },
+            "sub_opinions": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Sub opinions"
+            },
+            "citations": {
+                "type": "field",
+                "required": true,
+                "read_only": false,
+                "label": "Citations",
+                "child": {
+                    "type": "nested object",
+                    "required": true,
+                    "read_only": false,
+                    "children": {
+                        "volume": {
+                            "type": "integer",
+                            "required": true,
+                            "read_only": false,
+                            "label": "Volume",
+                            "help_text": "The volume of the reporter",
+                            "min_value": -32768,
+                            "max_value": 32767
+                        },
+                        "reporter": {
+                            "type": "string",
+                            "required": true,
+                            "read_only": false,
+                            "label": "Reporter",
+                            "help_text": "The abbreviation for the reporter"
+                        },
+                        "page": {
+                            "type": "string",
+                            "required": true,
+                            "read_only": false,
+                            "label": "Page",
+                            "help_text": "The 'page' of the citation in the reporter. Unfortunately, this is not an integer, but is a string-type because several jurisdictions do funny things with the so-called 'page'. For example, we have seen Roman numerals in Nebraska, 13301-M in Connecticut, and 144M in Montana."
+                        },
+                        "type": {
+                            "type": "choice",
+                            "required": true,
+                            "read_only": false,
+                            "label": "Type",
+                            "help_text": "The type of citation that this is.",
+                            "choices": [
+                                {
+                                    "value": 1,
+                                    "display_name": "A federal reporter citation (e.g. 5 F. 55)"
+                                },
+                                {
+                                    "value": 2,
+                                    "display_name": "A citation in a state-based reporter (e.g. Alabama Reports)"
+                                },
+                                {
+                                    "value": 3,
+                                    "display_name": "A citation in a regional reporter (e.g. Atlantic Reporter)"
+                                },
+                                {
+                                    "value": 4,
+                                    "display_name": "A citation in a specialty reporter (e.g. Lawyers' Edition)"
+                                },
+                                {
+                                    "value": 5,
+                                    "display_name": "A citation in an early SCOTUS reporter (e.g. 5 Black. 55)"
+                                },
+                                {
+                                    "value": 6,
+                                    "display_name": "A citation in the Lexis system (e.g. 5 LEXIS 55)"
+                                },
+                                {
+                                    "value": 7,
+                                    "display_name": "A citation in the WestLaw system (e.g. 5 WL 55)"
+                                },
+                                {
+                                    "value": 8,
+                                    "display_name": "A vendor neutral citation (e.g. 2013 FL 1)"
+                                },
+                                {
+                                    "value": 9,
+                                    "display_name": "A law journal citation within a scholarly or professional legal periodical (e.g. 95 Yale L.J. 5; 72 Soc.Sec.Rep.Serv. 318)"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "date_created": {
+                "type": "datetime",
+                "required": false,
+                "read_only": true,
+                "label": "Date created",
+                "help_text": "The moment when the item was created."
+            },
+            "date_modified": {
+                "type": "datetime",
+                "required": false,
+                "read_only": true,
+                "label": "Date modified",
+                "help_text": "The last moment when the item was modified. A value in year 1750 indicates the value is unknown"
+            },
+            "judges": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Judges",
+                "help_text": "The judges that participated in the opinion as a simple text string. This field is used when normalized judges cannot be placed into the panel field."
+            },
+            "date_filed": {
+                "type": "date",
+                "required": true,
+                "read_only": false,
+                "label": "Date filed",
+                "help_text": "The date the cluster of opinions was filed by the court"
+            },
+            "date_filed_is_approximate": {
+                "type": "boolean",
+                "required": false,
+                "read_only": false,
+                "label": "Date filed is approximate",
+                "help_text": "For a variety of opinions getting the correct date filed isvery difficult. For these, we have used heuristics to approximate the date."
+            },
+            "slug": {
+                "type": "slug",
+                "required": false,
+                "read_only": false,
+                "label": "Slug",
+                "help_text": "URL that the document should map to (the slug)",
+                "max_length": 75
+            },
+            "case_name_short": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Case name short",
+                "help_text": "The abridged name of the case, often a single word, e.g. 'Marsh'"
+            },
+            "case_name": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Case name",
+                "help_text": "The shortened name of the case"
+            },
+            "case_name_full": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Case name full",
+                "help_text": "The full name of the case"
+            },
+            "scdb_id": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Scdb id",
+                "help_text": "The ID of the item in the Supreme Court Database",
+                "max_length": 10
+            },
+            "scdb_decision_direction": {
+                "type": "choice",
+                "required": false,
+                "read_only": false,
+                "label": "Scdb decision direction",
+                "help_text": "the ideological \"direction\" of a decision in the Supreme Court database. More details at: http://scdb.wustl.edu/documentation.php?var=decisionDirection",
+                "choices": [
+                    {
+                        "value": 1,
+                        "display_name": "Conservative"
+                    },
+                    {
+                        "value": 2,
+                        "display_name": "Liberal"
+                    },
+                    {
+                        "value": 3,
+                        "display_name": "Unspecifiable"
+                    }
+                ]
+            },
+            "scdb_votes_majority": {
+                "type": "integer",
+                "required": false,
+                "read_only": false,
+                "label": "Scdb votes majority",
+                "help_text": "the number of justices voting in the majority in a Supreme Court decision. More details at: http://scdb.wustl.edu/documentation.php?var=majVotes",
+                "min_value": -2147483648,
+                "max_value": 2147483647
+            },
+            "scdb_votes_minority": {
+                "type": "integer",
+                "required": false,
+                "read_only": false,
+                "label": "Scdb votes minority",
+                "help_text": "the number of justices voting in the minority in a Supreme Court decision. More details at: http://scdb.wustl.edu/documentation.php?var=minVotes",
+                "min_value": -2147483648,
+                "max_value": 2147483647
+            },
+            "source": {
+                "type": "choice",
+                "required": false,
+                "read_only": false,
+                "label": "Source",
+                "help_text": "the source of the cluster, one of: C (court website), R (public.resource.org), CR (court website merged with resource.org), L (lawbox), LC (lawbox merged with court), LR (lawbox merged with resource.org), LCR (lawbox merged with court and resource.org), M (manual input), A (internet archive), H (brad heath archive), Z (columbia archive), ZA (columbia merged with internet archive), ZD (columbia merged with direct court input), ZC (columbia merged with court), ZH (columbia merged with brad heath archive), ZLC (columbia merged with lawbox and court), ZLR (columbia merged with lawbox and resource.org), ZLCR (columbia merged with lawbox, court, and resource.org), ZR (columbia merged with resource.org), ZCR (columbia merged with court and resource.org), ZL (columbia merged with lawbox), ZM (columbia merged with manual input), ZQ (columbia merged with 2020 anonymous database), U (Harvard, Library Innovation Lab Case Law Access Project), CU (court website merged with Harvard), D (direct court input), Q (2020 anonymous database), QU (2020 anonymous database merged with Harvard), CU (court website merged with Harvard), CRU (court website merged with public.resource.org and Harvard), DU (direct court input merged with Harvard), LU (lawbox merged with Harvard), LCU (Lawbox merged with court website and Harvard), LRU (Lawbox merged with public.resource.org and with Harvard), MU (Manual input merged with Harvard), RU (public.resource.org merged with Harvard), ZU (columbia archive merged with Harvard), ZLU (columbia archive merged with Lawbox and Harvard), ZDU (columbia archive merged with direct court input and Harvard), ZLRU (columbia archive merged with lawbox, public.resource.org and Harvard), ZLCRU (columbia archive merged with lawbox, court website, public.resource.org and Harvard), ZCU (columbia archive merged with court website and Harvard), ZMU (columbia archive merged with manual input and Harvard), ZRU (columbia archive merged with public.resource.org and Harvard), ZLCU (columbia archive merged with lawbox, court website and Harvard), G (recap)",
+                "choices": [
+                    {
+                        "value": "C",
+                        "display_name": "court website"
+                    },
+                    {
+                        "value": "R",
+                        "display_name": "public.resource.org"
+                    },
+                    {
+                        "value": "CR",
+                        "display_name": "court website merged with resource.org"
+                    },
+                    {
+                        "value": "L",
+                        "display_name": "lawbox"
+                    },
+                    {
+                        "value": "LC",
+                        "display_name": "lawbox merged with court"
+                    },
+                    {
+                        "value": "LR",
+                        "display_name": "lawbox merged with resource.org"
+                    },
+                    {
+                        "value": "LCR",
+                        "display_name": "lawbox merged with court and resource.org"
+                    },
+                    {
+                        "value": "M",
+                        "display_name": "manual input"
+                    },
+                    {
+                        "value": "A",
+                        "display_name": "internet archive"
+                    },
+                    {
+                        "value": "H",
+                        "display_name": "brad heath archive"
+                    },
+                    {
+                        "value": "Z",
+                        "display_name": "columbia archive"
+                    },
+                    {
+                        "value": "ZA",
+                        "display_name": "columbia merged with internet archive"
+                    },
+                    {
+                        "value": "ZD",
+                        "display_name": "columbia merged with direct court input"
+                    },
+                    {
+                        "value": "ZC",
+                        "display_name": "columbia merged with court"
+                    },
+                    {
+                        "value": "ZH",
+                        "display_name": "columbia merged with brad heath archive"
+                    },
+                    {
+                        "value": "ZLC",
+                        "display_name": "columbia merged with lawbox and court"
+                    },
+                    {
+                        "value": "ZLR",
+                        "display_name": "columbia merged with lawbox and resource.org"
+                    },
+                    {
+                        "value": "ZLCR",
+                        "display_name": "columbia merged with lawbox, court, and resource.org"
+                    },
+                    {
+                        "value": "ZR",
+                        "display_name": "columbia merged with resource.org"
+                    },
+                    {
+                        "value": "ZCR",
+                        "display_name": "columbia merged with court and resource.org"
+                    },
+                    {
+                        "value": "ZL",
+                        "display_name": "columbia merged with lawbox"
+                    },
+                    {
+                        "value": "ZM",
+                        "display_name": "columbia merged with manual input"
+                    },
+                    {
+                        "value": "ZQ",
+                        "display_name": "columbia merged with 2020 anonymous database"
+                    },
+                    {
+                        "value": "U",
+                        "display_name": "Harvard, Library Innovation Lab Case Law Access Project"
+                    },
+                    {
+                        "value": "CU",
+                        "display_name": "court website merged with Harvard"
+                    },
+                    {
+                        "value": "D",
+                        "display_name": "direct court input"
+                    },
+                    {
+                        "value": "Q",
+                        "display_name": "2020 anonymous database"
+                    },
+                    {
+                        "value": "QU",
+                        "display_name": "2020 anonymous database merged with Harvard"
+                    },
+                    {
+                        "value": "CRU",
+                        "display_name": "court website merged with public.resource.org and Harvard"
+                    },
+                    {
+                        "value": "DU",
+                        "display_name": "direct court input merged with Harvard"
+                    },
+                    {
+                        "value": "LU",
+                        "display_name": "lawbox merged with Harvard"
+                    },
+                    {
+                        "value": "LCU",
+                        "display_name": "Lawbox merged with court website and Harvard"
+                    },
+                    {
+                        "value": "LRU",
+                        "display_name": "Lawbox merged with public.resource.org and with Harvard"
+                    },
+                    {
+                        "value": "MU",
+                        "display_name": "Manual input merged with Harvard"
+                    },
+                    {
+                        "value": "RU",
+                        "display_name": "public.resource.org merged with Harvard"
+                    },
+                    {
+                        "value": "ZU",
+                        "display_name": "columbia archive merged with Harvard"
+                    },
+                    {
+                        "value": "ZLU",
+                        "display_name": "columbia archive merged with Lawbox and Harvard"
+                    },
+                    {
+                        "value": "ZDU",
+                        "display_name": "columbia archive merged with direct court input and Harvard"
+                    },
+                    {
+                        "value": "ZLRU",
+                        "display_name": "columbia archive merged with lawbox, public.resource.org and Harvard"
+                    },
+                    {
+                        "value": "ZLCRU",
+                        "display_name": "columbia archive merged with lawbox, court website, public.resource.org and Harvard"
+                    },
+                    {
+                        "value": "ZCU",
+                        "display_name": "columbia archive merged with court website and Harvard"
+                    },
+                    {
+                        "value": "ZMU",
+                        "display_name": "columbia archive merged with manual input and Harvard"
+                    },
+                    {
+                        "value": "ZRU",
+                        "display_name": "columbia archive merged with public.resource.org and Harvard"
+                    },
+                    {
+                        "value": "ZLCU",
+                        "display_name": "columbia archive merged with lawbox, court website and Harvard"
+                    },
+                    {
+                        "value": "G",
+                        "display_name": "recap"
+                    }
+                ]
+            },
+            "procedural_history": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Procedural history",
+                "help_text": "The history of the case as it jumped from court to court"
+            },
+            "attorneys": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Attorneys",
+                "help_text": "The attorneys that argued the case, as free text"
+            },
+            "nature_of_suit": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Nature of suit",
+                "help_text": "The nature of the suit. For the moment can be codes or laws or whatever"
+            },
+            "posture": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Posture",
+                "help_text": "The procedural posture of the case."
+            },
+            "syllabus": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Syllabus",
+                "help_text": "A summary of the issues presented in the case and the outcome."
+            },
+            "headnotes": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Headnotes",
+                "help_text": "Headnotes are summary descriptions of the legal issues discussed by the court in the particular case. They appear at the beginning of each case just after the summary and disposition. They are short paragraphs with a heading in bold face type. From Wikipedia - A headnote is a brief summary of a particular point of law that is added to the text of a courtdecision to aid readers in locating discussion of a legalissue in an opinion. As the term implies, headnotes appearat the beginning of the published opinion. Frequently, headnotes are value-added components appended to decisions by the publisher who compiles the decisions of a court for resale. As handed down by the court, a decision or written opinion does not contain headnotes. These are added later by an editor not connected to the court, but who instead works for a legal publishing house."
+            },
+            "summary": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Summary",
+                "help_text": "A summary of what happened in the case. Appears at the beginning of the case just after the title of the case and court information."
+            },
+            "disposition": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Disposition",
+                "help_text": "Description of the procedural outcome of the case, e.g. Reversed, dismissed etc. Generally a short paragraph that appears just after the summary or synopsis"
+            },
+            "history": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "History",
+                "help_text": "History of the case (similar to the summary, but focused on past events related to this case). Appears at the beginning of the case just after the title of the case and court information"
+            },
+            "other_dates": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Other dates",
+                "help_text": "Other date(s) as specified in the text (case header). This may include follow-up dates."
+            },
+            "cross_reference": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Cross reference",
+                "help_text": "Cross-reference citation (often to a past or future similar case). It does NOT identify this case."
+            },
+            "correction": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Correction",
+                "help_text": "Publisher's correction to the case text. Example: Replace last paragraph on page 476 with this text: blah blah blah. This is basically an unstructured text that can be used to manually correct case content according to publisher's instructions. No footnotes is expected within it."
+            },
+            "citation_count": {
+                "type": "integer",
+                "required": false,
+                "read_only": false,
+                "label": "Citation count",
+                "help_text": "The number of times this document is cited by other opinion",
+                "min_value": -2147483648,
+                "max_value": 2147483647
+            },
+            "precedential_status": {
+                "type": "choice",
+                "required": false,
+                "read_only": false,
+                "label": "Precedential status",
+                "help_text": "The precedential status of document, one of: Published, Unpublished, Errata, Separate, In-chambers, Relating-to, Unknown",
+                "choices": [
+                    {
+                        "value": "Published",
+                        "display_name": "Precedential"
+                    },
+                    {
+                        "value": "Unpublished",
+                        "display_name": "Non-Precedential"
+                    },
+                    {
+                        "value": "Errata",
+                        "display_name": "Errata"
+                    },
+                    {
+                        "value": "Separate",
+                        "display_name": "Separate Opinion"
+                    },
+                    {
+                        "value": "In-chambers",
+                        "display_name": "In-chambers"
+                    },
+                    {
+                        "value": "Relating-to",
+                        "display_name": "Relating-to orders"
+                    },
+                    {
+                        "value": "Unknown",
+                        "display_name": "Unknown Status"
+                    }
+                ]
+            },
+            "date_blocked": {
+                "type": "date",
+                "required": false,
+                "read_only": false,
+                "label": "Date blocked",
+                "help_text": "The date that this opinion was blocked from indexing by search engines"
+            },
+            "blocked": {
+                "type": "boolean",
+                "required": false,
+                "read_only": false,
+                "label": "Blocked",
+                "help_text": "Whether a document should be blocked from indexing by search engines"
+            },
+            "filepath_json_harvard": {
+                "type": "file upload",
+                "required": false,
+                "read_only": false,
+                "label": "Filepath json harvard",
+                "help_text": "Path to local storage of JSON collected from Harvard Case Law project containing available metadata, opinion and opinion cluster.",
+                "max_length": 1000
+            },
+            "filepath_pdf_harvard": {
+                "type": "file upload",
+                "required": false,
+                "read_only": false,
+                "label": "Filepath pdf harvard",
+                "help_text": "The case PDF from the Caselaw Access Project for this cluster",
+                "max_length": 100
+            },
+            "arguments": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Arguments",
+                "help_text": "The attorney(s) and legal arguments presented as HTML text. This is primarily seen in older opinions and can contain case law cited and arguments presented to the judges."
+            },
+            "headmatter": {
+                "type": "string",
+                "required": false,
+                "read_only": false,
+                "label": "Headmatter",
+                "help_text": "Headmatter is the content before an opinion in the Harvard CaseLaw import. This consists of summaries, headnotes, attorneys etc for the opinion."
+            }
+        }
+    },
+    "filters": {
+        "id": {
+            "type": "NumberRangeFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range"
+            ]
+        },
+        "date_created": {
+            "type": "NumberFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range",
+                "year",
+                "month",
+                "day",
+                "hour",
+                "minute",
+                "second"
+            ]
+        },
+        "date_modified": {
+            "type": "NumberFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range",
+                "year",
+                "month",
+                "day",
+                "hour",
+                "minute",
+                "second"
+            ]
+        },
+        "date_filed": {
+            "type": "NumberFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range",
+                "year",
+                "month",
+                "day"
+            ]
+        },
+        "scdb_id": {
+            "type": "CharFilter",
+            "lookup_types": [
+                "exact"
+            ]
+        },
+        "scdb_decision_direction": {
+            "type": "ChoiceFilter",
+            "lookup_types": [
+                "exact"
+            ],
+            "choices": [
+                {
+                    "value": 1,
+                    "display_name": "Conservative"
+                },
+                {
+                    "value": 2,
+                    "display_name": "Liberal"
+                },
+                {
+                    "value": 3,
+                    "display_name": "Unspecifiable"
+                }
+            ]
+        },
+        "scdb_votes_majority": {
+            "type": "NumberRangeFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range"
+            ]
+        },
+        "scdb_votes_minority": {
+            "type": "NumberRangeFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range"
+            ]
+        },
+        "citation_count": {
+            "type": "NumberRangeFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range"
+            ]
+        },
+        "precedential_status": {
+            "type": "ChoiceFilter",
+            "lookup_types": [
+                "exact"
+            ],
+            "choices": [
+                {
+                    "value": "Published",
+                    "display_name": "Precedential"
+                },
+                {
+                    "value": "Unpublished",
+                    "display_name": "Non-Precedential"
+                },
+                {
+                    "value": "Errata",
+                    "display_name": "Errata"
+                },
+                {
+                    "value": "Separate",
+                    "display_name": "Separate Opinion"
+                },
+                {
+                    "value": "In-chambers",
+                    "display_name": "In-chambers"
+                },
+                {
+                    "value": "Relating-to",
+                    "display_name": "Relating-to orders"
+                },
+                {
+                    "value": "Unknown",
+                    "display_name": "Unknown Status"
+                }
+            ]
+        },
+        "date_blocked": {
+            "type": "NumberFilter",
+            "lookup_types": [
+                "exact",
+                "gte",
+                "gt",
+                "lte",
+                "lt",
+                "range",
+                "year",
+                "month",
+                "day"
+            ]
+        },
+        "blocked": {
+            "type": "BooleanFilter",
+            "lookup_types": [
+                "exact"
+            ]
+        },
+        "docket": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'Dockets'"
+        },
+        "panel": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'People'"
+        },
+        "non_participating_judges": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'People'"
+        },
+        "sub_opinions": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'Opinions'"
+        },
+        "source": {
+            "type": "MultipleChoiceFilter",
+            "lookup_types": [
+                "exact"
+            ],
+            "choices": [
+                {
+                    "value": "C",
+                    "display_name": "court website"
+                },
+                {
+                    "value": "R",
+                    "display_name": "public.resource.org"
+                },
+                {
+                    "value": "CR",
+                    "display_name": "court website merged with resource.org"
+                },
+                {
+                    "value": "L",
+                    "display_name": "lawbox"
+                },
+                {
+                    "value": "LC",
+                    "display_name": "lawbox merged with court"
+                },
+                {
+                    "value": "LR",
+                    "display_name": "lawbox merged with resource.org"
+                },
+                {
+                    "value": "LCR",
+                    "display_name": "lawbox merged with court and resource.org"
+                },
+                {
+                    "value": "M",
+                    "display_name": "manual input"
+                },
+                {
+                    "value": "A",
+                    "display_name": "internet archive"
+                },
+                {
+                    "value": "H",
+                    "display_name": "brad heath archive"
+                },
+                {
+                    "value": "Z",
+                    "display_name": "columbia archive"
+                },
+                {
+                    "value": "ZA",
+                    "display_name": "columbia merged with internet archive"
+                },
+                {
+                    "value": "ZD",
+                    "display_name": "columbia merged with direct court input"
+                },
+                {
+                    "value": "ZC",
+                    "display_name": "columbia merged with court"
+                },
+                {
+                    "value": "ZH",
+                    "display_name": "columbia merged with brad heath archive"
+                },
+                {
+                    "value": "ZLC",
+                    "display_name": "columbia merged with lawbox and court"
+                },
+                {
+                    "value": "ZLR",
+                    "display_name": "columbia merged with lawbox and resource.org"
+                },
+                {
+                    "value": "ZLCR",
+                    "display_name": "columbia merged with lawbox, court, and resource.org"
+                },
+                {
+                    "value": "ZR",
+                    "display_name": "columbia merged with resource.org"
+                },
+                {
+                    "value": "ZCR",
+                    "display_name": "columbia merged with court and resource.org"
+                },
+                {
+                    "value": "ZL",
+                    "display_name": "columbia merged with lawbox"
+                },
+                {
+                    "value": "ZM",
+                    "display_name": "columbia merged with manual input"
+                },
+                {
+                    "value": "ZQ",
+                    "display_name": "columbia merged with 2020 anonymous database"
+                },
+                {
+                    "value": "U",
+                    "display_name": "Harvard, Library Innovation Lab Case Law Access Project"
+                },
+                {
+                    "value": "CU",
+                    "display_name": "court website merged with Harvard"
+                },
+                {
+                    "value": "D",
+                    "display_name": "direct court input"
+                },
+                {
+                    "value": "Q",
+                    "display_name": "2020 anonymous database"
+                },
+                {
+                    "value": "QU",
+                    "display_name": "2020 anonymous database merged with Harvard"
+                },
+                {
+                    "value": "CU",
+                    "display_name": "court website merged with Harvard"
+                },
+                {
+                    "value": "CRU",
+                    "display_name": "court website merged with public.resource.org and Harvard"
+                },
+                {
+                    "value": "DU",
+                    "display_name": "direct court input merged with Harvard"
+                },
+                {
+                    "value": "LU",
+                    "display_name": "lawbox merged with Harvard"
+                },
+                {
+                    "value": "LCU",
+                    "display_name": "Lawbox merged with court website and Harvard"
+                },
+                {
+                    "value": "LRU",
+                    "display_name": "Lawbox merged with public.resource.org and with Harvard"
+                },
+                {
+                    "value": "MU",
+                    "display_name": "Manual input merged with Harvard"
+                },
+                {
+                    "value": "RU",
+                    "display_name": "public.resource.org merged with Harvard"
+                },
+                {
+                    "value": "ZU",
+                    "display_name": "columbia archive merged with Harvard"
+                },
+                {
+                    "value": "ZLU",
+                    "display_name": "columbia archive merged with Lawbox and Harvard"
+                },
+                {
+                    "value": "ZDU",
+                    "display_name": "columbia archive merged with direct court input and Harvard"
+                },
+                {
+                    "value": "ZLRU",
+                    "display_name": "columbia archive merged with lawbox, public.resource.org and Harvard"
+                },
+                {
+                    "value": "ZLCRU",
+                    "display_name": "columbia archive merged with lawbox, court website, public.resource.org and Harvard"
+                },
+                {
+                    "value": "ZCU",
+                    "display_name": "columbia archive merged with court website and Harvard"
+                },
+                {
+                    "value": "ZMU",
+                    "display_name": "columbia archive merged with manual input and Harvard"
+                },
+                {
+                    "value": "ZRU",
+                    "display_name": "columbia archive merged with public.resource.org and Harvard"
+                },
+                {
+                    "value": "ZLCU",
+                    "display_name": "columbia archive merged with lawbox, court website and Harvard"
+                },
+                {
+                    "value": "G",
+                    "display_name": "recap"
+                }
+            ]
+        },
+        "citations": {
+            "type": "RelatedFilter",
+            "lookup_types": "See available filters for 'Citations'"
+        }
+    },
+    "ordering": [
+        "id",
+        "date_created",
+        "date_modified",
+        "date_filed",
+        "citation_count",
+        "date_blocked"
+    ]
+}

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+	
+    <link rel="stylesheet" href="../assets/css/docs.css">
+    <link rel="stylesheet" href="../assets/css/mdstyle.css">
+    <title>Home</title>
+  </head>
+  <body>
+		<div class="container mt-2" style="width: 95%;margin-left: 2.5%;">
+			<div class="row">
+			<div class="col mb-4">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 p-2 fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="margin-right: 100px" href="#">Courtllistener API Documentation</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="help.html">Help</a>
+        </li>
+		<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Documentation Pages
+          </a>
+          <ul class="dropdown-menu">
+			              <li><a class="dropdown-item" href="aba-ratings.html">aba-ratings</a></li>
+              <li><a class="dropdown-item" href="agreements.html">agreements</a></li>
+              <li><a class="dropdown-item" href="audio.html">audio</a></li>
+              <li><a class="dropdown-item" href="clusters.html">clusters</a></li>
+              <li><a class="dropdown-item" href="courts.html">courts</a></li>
+              <li><a class="dropdown-item" href="debts.html">debts</a></li>
+              <li><a class="dropdown-item" href="disclosure-positions.html">disclosure-positions</a></li>
+              <li><a class="dropdown-item" href="disclosure-typeahead.html">disclosure-typeahead</a></li>
+              <li><a class="dropdown-item" href="dockets.html">dockets</a></li>
+              <li><a class="dropdown-item" href="educations.html">educations</a></li>
+              <li><a class="dropdown-item" href="financial-disclosures.html">financial-disclosures</a></li>
+              <li><a class="dropdown-item" href="fjc-integrated-database.html">fjc-integrated-database</a></li>
+              <li><a class="dropdown-item" href="gifts.html">gifts</a></li>
+              <li><a class="dropdown-item" href="investments.html">investments</a></li>
+              <li><a class="dropdown-item" href="non-investment-incomes.html">non-investment-incomes</a></li>
+              <li><a class="dropdown-item" href="opinions-cited.html">opinions-cited</a></li>
+              <li><a class="dropdown-item" href="opinions.html">opinions</a></li>
+              <li><a class="dropdown-item" href="originating-court-information.html">originating-court-information</a></li>
+              <li><a class="dropdown-item" href="people.html">people</a></li>
+              <li><a class="dropdown-item" href="political-affiliations.html">political-affiliations</a></li>
+              <li><a class="dropdown-item" href="positions.html">positions</a></li>
+              <li><a class="dropdown-item" href="recap-fetch.html">recap-fetch</a></li>
+              <li><a class="dropdown-item" href="reimbursements.html">reimbursements</a></li>
+              <li><a class="dropdown-item" href="retention-events.html">retention-events</a></li>
+              <li><a class="dropdown-item" href="schools.html">schools</a></li>
+              <li><a class="dropdown-item" href="search.html">search</a></li>
+              <li><a class="dropdown-item" href="sources.html">sources</a></li>
+              <li><a class="dropdown-item" href="spouse-incomes.html">spouse-incomes</a></li>
+              <li><a class="dropdown-item" href="tags.html">tags</a></li>
+
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input id="searchvalue" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="button" onclick="search()">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+</div>
+</div>
+<div class="row mt-4 justify-content-center">
+	<div class="col mt-4 mb-2 offset-1">
+		<h4 id="0">CourtListener Documentation</h4>
+		<p id="1">The CourtListener  site rest API documentation recommends learning their APIs by studying the JSON returned by making an OPTIONS request on the APIs URL.  IMO, JSON is not an easy way to follow a structure.</p>
+		<p id="3">This site is an attempt to make the CourtListener  documentation easier to learn by providing a set of HTML pages, each of which contains a JSON to HTML translation of one of the CourtListener  APIs in the form of an html table.</p>
+		<p id="5">The base table contains a set of nested tables  so that you see the structure of the API reading left to right and see relationships.</p>
+		<p id="7">The navbar provides a dropdown of links to all of the pages.</p>
+		<p id="9">The navbar search form is active and provides full text scrolling searching of the text.</p>
+		<ol id="10">
+		<li id="10">Enter a search term in the search text input.</li>
+		<li id="11">CourtListener ick search button.</li>
+		</ol>
+		<p id="13">If your search term exists in the text it will be selected and each time you CourtListener ick the search button it will select the next ocurrance untio it wraps back to the search input.</p>
+		<h5 id="15">Future Plans:</h5>
+		<ol id="16">
+		<li id="16">Convert to a tabbed interface with explanatory text - perhaps from the CourtListener  site.</li>
+		<li id="17">Provide a tab of language specific methods used to access the APIs.</li>
+		<li id="18">Provide a glossary page.</li>
+		</ol>
+	</div>
+</div>
+</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.js"></script>
+		<script src="../assets/js/docs"></script>
+</body>
+</html>
