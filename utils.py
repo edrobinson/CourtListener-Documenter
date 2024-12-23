@@ -38,14 +38,8 @@ def getType(value):
 
 
 def fileGetContents(path):
-    try:
-        f = open(path, "r")
-        content = f.read()
-        f.close()
-        return content
-    except:
-        return False
-
+    return readFile(path)
+ 
 
 # Return a template from the templates folder
 def getTemplate(name):
@@ -55,15 +49,8 @@ def getTemplate(name):
     Returns the template text or false if the template cannot be opened
     """
     path = f"{config['all']['templateFolder']}/{name}"
-    try:
-        file = open(path, "r")
-    except Exception:
-        print(f"Failed to open element template {name} path {path}")
-        return False
-    content = file.read()
-    file.close()
-    return content
-
+    return readFile(path)
+ 
 
 # Get the page template an load its css and js
 def loadPageTemplate():
@@ -99,9 +86,7 @@ def buildNavbar(folder):
     # Save it
     tplFolder = config["all"]["templateFolder"]
     file_path = f"{tplFolder}/navbar.html"
-    file = open(file_path, "w")
-    file.write(menutpl)
-    file.close
+    writeFile(file_path, menutpl)
     return menutpl
 
 
@@ -119,9 +104,7 @@ def buildFullPage(content, title):
 # Load a json andapplyjson,loads to it.
 # Return the resulting sictionary.
 def getApiFileAsDictionary(filename):
-    file = open(filename, "r")
-    content = file.read()
-    file.close()
+    content = readFIle(filename)
     return json.loads(content)
 
 
@@ -138,3 +121,22 @@ def logMsg(msg, printmsg=True):
         f = open("doclog.log", "a")
         f.write(f"{msg}\n")
         f.close()
+
+#File Write shortcut
+def writeFile(fpath, content):
+    try:
+        with open(fpath, "w") as file:
+            file.write(content)
+        return True
+    except Exception as  e:
+        print(e)
+        return False
+        
+#File read Shortcut
+def readFile(fpath):
+    try:
+        with open(fpath,  'r') as file:
+            return file.read()
+    except Exception as e:
+        print(e)
+        return False;

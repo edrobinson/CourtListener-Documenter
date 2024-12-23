@@ -80,12 +80,8 @@ class generateDocs:
 
     # Process the file whose name is pased in
     def processFile(self, filename):
-        try:
-            f = open(filename, "r")
-            json = f.read()
-            f.close()
-        except:
-            print(f"Failed to open {filename} continuing.\n")
+        json = utils.readFile(filename)
+        if not json:   
             return False
 
         # setup the path to the finished html page
@@ -107,10 +103,8 @@ class generateDocs:
             "utf-8"
         )  # Some templates have unicodes in them that f.write complains about.
         fpath = f"{self.destination}/{fname}.html"
-        f = open(fpath, "w", encoding="utf-8")
-        f.write(page)
-        f.close()
-        return True
+        return utils.writeFile(fpath, page)
+
 
     #Whenever we generate a new set of pages, we need to update
     #any pages that dont change with a new navbar.

@@ -11,7 +11,7 @@ The output islocated in /ClApiJson
 """
 class getApiJsons:
     # headers array for requests
-    Headers = {"Authentication": "Token your cl auth token"}
+    Headers = {"Authentication": "Token 2ce053ed5100cd5b3d3486ea51711be2915ad8c5"}
     
     def __init__(self, outputFolder):
         self.outputFolder = outputFolder
@@ -57,8 +57,9 @@ class getApiJsons:
 
             json = self.prettyJson(json)
             path = f"{self.outputFolder}/{api}.json"
-            f = open(path, "w")
-            f.write(json)
-            f.close
-            self.count +=1
+            if not utils.writeFile(path, json):
+                print(f'Failed to save {api} json file.')
+            else:
+                self.count +=1
+ 
         print(f"Done. Created {self.count} API JSON files.")
