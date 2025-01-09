@@ -12,11 +12,12 @@ class makeDocSite:
         #Create the destination folder. Won't return if problems occur.
         self.checkDestination()
         
-        shutil.rmtree(destination)
+        shutil.rmtree(self.destination, ignore_errors=True)
         
         shutil.copytree('htmlpages', destination + '/htmlpages')
         shutil.copytree('assets', destination + '/assets')
-        shutil.copy('index.html', destination + '/index.html')
+        self.makeRootIndex()
+ 
         exit(r'Site created . . .')
 
     #Create destination folder.
@@ -29,3 +30,10 @@ class makeDocSite:
             if answer != 'Y':
                 exit('Terminated . . .')
             return True
+ 
+    #Copy the index from templates
+    def makeRootIndex(self):
+        with open('./templates/clsiteindex.html', 'r') as file:
+            indexcode= file.read();
+        with open(f'{self.destination}/index.html', 'w') as file:
+            file.write(indexcode)
